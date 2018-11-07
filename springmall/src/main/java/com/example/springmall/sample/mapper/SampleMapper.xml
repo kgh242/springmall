@@ -3,7 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.example.springmall.sample.mapper.SampleMapper">
- 	<select id="selectSampleAll" resultType="string">
-		SELECT no, id, pw FROM sample
+ 	<select id="selectSampleAll" resultType="HashMap">
+		SELECT no as sampleNo, id as sampleId, pw as samplePw FROM sample ORDER BY no LIMIT ${startRow},${rowPerPage}
 	</select>
+	<select id="selectSampleCount" resultType="int">
+        SELECT COUNT(*)	FROM sample 
+    </select>
+	<delete id="deleteSample" parameterType="int">
+    	DELETE FROM sample WHERE no=#{value}
+    </delete>
 </mapper>

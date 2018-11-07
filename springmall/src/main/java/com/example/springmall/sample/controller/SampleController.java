@@ -19,9 +19,13 @@ public class SampleController {
 	
 	//1. 샘플 목록
 	@RequestMapping(value="/sample/sampleList", method=RequestMethod.GET)
-	public String sampleList(Model model) {	//Model model = new Model();
-		List<Sample> sampleList = sampleService.getSampleAll();
+	public String sampleList(Model model,@RequestParam(value="startRow",required=false,defaultValue="0") int startRow) {	//Model model = new Model();
+		System.out.println("Controller.sampleList");
+		List<Sample> sampleList = sampleService.getSampleAll(startRow);
+		int totalCount=sampleService.getSampleCount();
 		model.addAttribute("sampleList", sampleList);
+		model.addAttribute("startRow",startRow);
+		model.addAttribute("totalCount", totalCount);
 		return "/sample/sampleList";
 	}
 	

@@ -34,5 +34,12 @@
 			</c:forEach>
 		</tbody>
 	</table>
+		<c:if test="${startRow >9}">
+			<a href="/sample/sampleList?startRow=${startRow -10}"><button>이전</button></a>
+		</c:if>
+		<c:if test="${startRow < totalCount-10}">
+			<a href="/sample/sampleList?startRow=${startRow +10}"><button>다음</button></a>
+		</c:if>
+	
 </body>
 </html>

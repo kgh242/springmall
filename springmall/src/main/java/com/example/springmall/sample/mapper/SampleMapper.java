@@ -1,5 +1,6 @@
 package com.example.springmall.sample.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -9,7 +10,8 @@ import com.example.springmall.sample.vo.Sample;
 @Mapper
 public interface SampleMapper {
 	//1.select all
-	List<Sample> selectSampleAll();
+	List<Sample> selectSampleAll(int startRow, int rowPerPage);
+	int selectSampleCount();
 	//2.insert
 	int insertSample(Sample sample);
 	//3.delete
