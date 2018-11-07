@@ -18,17 +18,11 @@ public class SampleService {
 	//1
 	public List<Sample> getSampleAll(){
 		// 페이징 관련 코드
-	//	return sampleMapper.selectSampleAll();
-		List<Sample> list = new ArrayList<Sample>();
-		list.add(new Sample(1,"user1","1234"));
-		list.add(new Sample(2,"user2","1234"));
-		list.add(new Sample(3,"user3","1234"));
-		return list;
+		return sampleMapper.selectSampleAll();
 	}
 	
 	//2
 	public int removeSample(int sampleNo) {
-	//	return sampleMapper.deleteSample(sampleNo);
-		return 1;
+		return sampleMapper.deleteSample(sampleNo);
 	}
 }
