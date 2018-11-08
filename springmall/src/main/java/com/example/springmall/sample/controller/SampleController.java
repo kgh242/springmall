@@ -51,7 +51,9 @@ public class SampleController {
 		//sample친구들 (도메인객체, 커맨드객체등등)
 		//command 객체의 멤버변수 == input태그 name속성, 표준 setter필요 
 		System.out.println("Controller.addSample 액션");
-		int row = sampleService.addSample(sample);
+		if(sampleService.addSample(sample)==1) {
+			System.out.println("정보등록완료");
+		}
 		return "redirect:/sample/sampleList";
 	}
 	
@@ -67,7 +69,9 @@ public class SampleController {
 	@RequestMapping(value="/sample/modifySample", method=RequestMethod.POST)
 	public String modifySample(Sample sample) {
 		System.out.println("Controller.modifySample 액션");
-		sampleService.modifySample(sample);
+		if(sampleService.modifySample(sample)==1) {
+			System.out.println("정보수정완료");
+		}
 		return "redirect:/sample/sampleList";
 	}
 }

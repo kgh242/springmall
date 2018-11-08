@@ -7,26 +7,37 @@
 <title>addSample</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(document).ready(()=>{
+		$('#addButton').click(()=>{
+			alert('등록되었습니다.');
+			$('#addForm').submit();
+		});
+		$('#listButton').click(()=>{
+			$('#listForm').submit();
+		});
+	});
+</script>
 </head>
 <body>
+	<div class="container">
 	<h1>AddSample</h1>
-	<form action = "<%=request.getContextPath()%>/SampleController" method="post">
-		<table class="table">
-			<tr>
-				<input type="hidden" value="sampleNo">
-			</tr>
-			<tr>
-				<td>ID</td>
-				<td><input type="text" name="sampleId"></td>
-			</tr>
-			<tr>
-				<td>PW</td>
-				<td><input type="text" name="samplePw"></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="제출"/></td>
-			</tr>
-		</table>
-	</form>
+		<form action="/sample/addSample" method="post" id="addForm">
+			<table class="table">
+				<tr>
+					<td><label for="sampleId">ID:</label></td>
+					<td><input type="text" class="form-control" name="sampleId"></td>
+				</tr>
+				<tr>
+					<td><label for="samplePw">PW:</label></td>
+					<td><input type="text" class="form-control" name="samplePw"></td>
+				</tr>
+			</table>
+			<button id="addButton" type="button" class="btn btn-primary">가입</button>
+		</form>
+		<form action="/sample/sampleList" id="listForm">
+			<button id="listButton" type="button" class="btn btn-warning">처음으로</button>
+		</form>
+	</div>
 </body>
 </html>
