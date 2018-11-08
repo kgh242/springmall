@@ -8,6 +8,7 @@
 <!-- bootStrap CDN -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <!-- JQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 	<h1>sampleList</h1>
@@ -32,6 +33,9 @@
 					<td><a href="/sample/removeSample?sampleNo=${sample.sampleNo}">UPDATE</a></td>
 				</tr>
 			</c:forEach>
+				<tr>
+					<td colspan="5"><a href="/sample/addSample"><button>회원가입</button></a></td>
+				</tr>
 		</tbody>
 	</table>
 		<c:if test="${startRow >9}">
@@ -40,6 +44,5 @@
 		<c:if test="${startRow < totalCount-10}">
 			<a href="/sample/sampleList?startRow=${startRow +10}"><button>다음</button></a>
 		</c:if>
-	
 </body>
 </html>

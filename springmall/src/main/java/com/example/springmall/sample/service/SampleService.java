@@ -24,7 +24,6 @@ public class SampleService {
 		return totalCount=sampleMapper.selectSampleCount(); 
 	}
 	public List<Sample> getSampleAll(int startRow){
-		// 페이징 관련 코드
 		return sampleMapper.selectSampleAll(startRow,rowPerPage);
 	}
 	
@@ -37,5 +36,20 @@ public class SampleService {
 			System.out.println("삭제실패");
 		}
 		return result;
+	}
+	
+	//3
+	public int addSample(Sample sample) {
+		return sampleMapper.insertSample(sample);
+	}
+	
+	//4-1
+	public Sample getSample(int sampleNo) {
+		return sampleMapper.selectOne(sampleNo);
+	}
+	
+	//4-2
+	public int modifySample(Sample sample) {
+		return sampleMapper.updateSample(sample);
 	}
 }

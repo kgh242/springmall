@@ -12,4 +12,13 @@
 	<delete id="deleteSample" parameterType="int">
     	DELETE FROM sample WHERE no=#{value}
     </delete>
+    <insert id="insertSample" parameterType="com.example.springmall.sample.vo.Sample">
+    	INSERT INTO sample(id as sampleId, pw as samplePw) VALUES #{id},#{pw}
+    </insert>
+    <select id="selectOne" resultType="map">
+    	SELECT no as sampleNo, id as sampleId, pw as samplePw FROM sample WHERE no=#{no}
+    </select>
+    <update id="updateSample" parameterType="com.example.springmall.sample.vo.Sample">
+    	UPDATE sample SET pw=#{pw} WHERE id=#{id}
+    </update>
 </mapper>

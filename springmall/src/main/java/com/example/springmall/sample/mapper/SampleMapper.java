@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.example.springmall.sample.vo.Sample;
 
 @Mapper
-public interface SampleMapper {
+public interface SampleMapper { //인터페이스는 무조건 public 
 	//1.select all
 	List<Sample> selectSampleAll(int startRow, int rowPerPage);
 	int selectSampleCount();
@@ -18,4 +18,6 @@ public interface SampleMapper {
 	int deleteSample(int sampleNo);
 	//4.update
 	int updateSample(Sample sample);
+	//5.select one
+	Sample selectOne(int sampleNo);
 }

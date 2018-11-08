@@ -37,4 +37,37 @@ public class SampleController {
 		}
 		return "redirect:/sample/sampleList"; //spring은 redirect를 먼저인식
 	}
+	
+	//3-1 입력 폼
+	@RequestMapping(value="/sample/addSample", method=RequestMethod.GET)
+	public String addSample() {
+		System.out.println("Controller.addSample 폼 이동");
+		return "/sample/addSample";
+		// jqeury, bootstrap, Sample command객체 
+	}
+	//3-2 입력 액션
+	@RequestMapping(value="/sample/addSample", method=RequestMethod.POST)
+	public String addSample(Sample sample) { 
+		//sample친구들 (도메인객체, 커맨드객체등등)
+		//command 객체의 멤버변수 == input태그 name속성, 표준 setter필요 
+		System.out.println("Controller.addSample 액션");
+		int row = sampleService.addSample(sample);
+		return "redirect:/sample/sampleList";
+	}
+	
+	//4-1 수정 폼
+	@RequestMapping(value="/sample/modifySample", method=RequestMethod.GET)
+	public String modifySample(Model model,@RequestParam(value="sampleNo") int sampleNo) {
+		System.out.println("Controller.modifySample 폼 이동");
+		Sample sample = sampleService.getSample(sampleNo);
+		model.addAttribute("sample",sample);
+		return "/sample/modifySample";
+	}
+	//4-2 수정 액션
+	@RequestMapping(value="/sample/modifySample", method=RequestMethod.POST)
+	public String modifySample(Sample sample) {
+		System.out.println("Controller.modifySample 액션");
+		sampleService.modifySample(sample);
+		return "redirect:/sample/sampleList";
+	}
 }
