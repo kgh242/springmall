@@ -21,4 +21,10 @@
     <update id="updateSample" parameterType="com.example.springmall.sample.vo.Sample">
     	UPDATE sample SET sampleId=#{sampleId}, samplePw=#{samplePw} WHERE sampleNo=#{sampleNo} 
     </update>
+    <select id="loginSample" resultType="int">
+    	SELECT COUNT(*) FROM sample WHERE sampleId=#{sampleId}, samplePw=#{samplePw}
+    </select>
+    <select id="loginSelectSample" parameterType="string" resultType="com.example.springmall.sample.vo.Sample">
+    	SELECT sampleId, samplePw FROM sample WHERE sampleId=#{sampleId}, samplePw=#{samplePw}
+    </select>
 </mapper>

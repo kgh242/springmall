@@ -20,4 +20,8 @@ public interface SampleMapper { //인터페이스는 무조건 public
 	int updateSample(Sample sample);
 	//5.select one
 	Sample selectOne(int sampleNo);
+	//6.login
+	int loginSample(Sample sample);
+	//7.loginSelect
+	Sample loginSelectSample(String sampleId, String samplePw);
 }

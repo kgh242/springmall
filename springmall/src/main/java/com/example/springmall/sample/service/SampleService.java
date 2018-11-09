@@ -52,4 +52,13 @@ public class SampleService {
 	public int modifySample(Sample sample) {
 		return sampleMapper.updateSample(sample);
 	}
+	
+	//5-1
+	public Sample getLoginSample(String sampleId, String samplePw) {
+		return sampleMapper.loginSelectSample(sampleId, samplePw);
+	}
+	//5-2
+	public int loginSample(Sample sample) {
+		return sampleMapper.loginSample(sample);
+	}
 }
