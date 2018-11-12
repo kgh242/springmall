@@ -22,7 +22,7 @@
 <body>
 	<div class="container">
 	<h1>AddSample</h1>
-		<form action="/sample/addSample" method="post" id="addForm">
+		<form action="/sample/addSample" method="post" id="addForm" enctype="multipart/form-data">
 			<table class="table">
 				<tr>
 					<td><label for="sampleId">ID:</label></td>
@@ -32,8 +32,12 @@
 					<td><label for="samplePw">PW:</label></td>
 					<td><input type="text" class="form-control" name="samplePw"></td>
 				</tr>
+				<tr>
+					<td><label for="multipartFile">파일업로드:</label></td>
+					<td><input type="file" class="form-control" name="multipartFile"></td>
+				</tr>
 			</table>
-			<button id="addButton" type="button" class="btn btn-primary">가입</button>
+			<button id="addButton" type="button" class="btn btn-primary">등록</button>
 		</form>
 		<form action="/sample/sampleList" id="listForm">
 			<button id="listButton" type="button" class="btn btn-warning">처음으로</button>

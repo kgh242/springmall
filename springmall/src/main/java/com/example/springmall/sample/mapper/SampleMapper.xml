@@ -6,25 +6,31 @@
  	<select id="selectSampleAll" resultType="HashMap">
 		SELECT sampleNo, sampleId, samplePw FROM sample ORDER BY sampleNo LIMIT ${startRow},${rowPerPage}
 	</select>
+	
 	<select id="selectSampleCount" resultType="int">
         SELECT COUNT(*)	FROM sample 
     </select>
+    
 	<delete id="deleteSample" parameterType="int">
     	DELETE FROM sample WHERE sampleNo=#{value}
     </delete>
+    
     <insert id="insertSample" parameterType="com.example.springmall.sample.vo.Sample">
-    	INSERT INTO sample VALUES (#{sampleNo},#{sampleId},#{samplePw})
+        INSERT INTO sample VALUES (#{sampleNo},#{sampleId},#{samplePw})
+        <selectKey resultType="int" keyProperty="sampleNo" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
+    
     <select id="selectOne" parameterType="int" resultType="com.example.springmall.sample.vo.Sample">
     	SELECT sampleNo, sampleId, samplePw FROM sample WHERE sampleNo=#{sampleNo}
     </select>
+    
     <update id="updateSample" parameterType="com.example.springmall.sample.vo.Sample">
     	UPDATE sample SET sampleId=#{sampleId}, samplePw=#{samplePw} WHERE sampleNo=#{sampleNo} 
     </update>
-    <select id="loginSample" resultType="int">
-    	SELECT COUNT(*) FROM sample WHERE sampleId=#{sampleId}, samplePw=#{samplePw}
-    </select>
-    <select id="loginSelectSample" parameterType="string" resultType="com.example.springmall.sample.vo.Sample">
-    	SELECT sampleId, samplePw FROM sample WHERE sampleId=#{sampleId}, samplePw=#{samplePw}
+    
+    <select id="loginSample" parameterType="com.example.springmall.sample.vo.Sample" resultType="int">
+    	SELECT COUNT(*) FROM sample WHERE sampleId=#{sampleId} AND samplePw=#{samplePw}
     </select>
 </mapper>

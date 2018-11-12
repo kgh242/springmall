@@ -26,6 +26,18 @@
 <body>
 	<div class="container">
 	<h1>sampleList</h1>
+	<c:if test="${LoginId == null}">
+	<form action="/sample/loginSample" method="post">
+		<input type="hidden" name="sampleNo" value="1">
+		<input type="text" name="sampleId" placeholder="ID">
+		<input type="password" name="samplePw" placeholder="PW">
+		<button type="submit">LOGIN</button>
+	</form>
+	</c:if>
+	<c:if test="${LoginId != null}">
+		${LoginId} 로그인 중 <br>
+		<a href="/sample/logoutSample">로그아웃</a>
+	</c:if>
 		<table class="table">
 			<thead>
 				<tr class="table-active">
