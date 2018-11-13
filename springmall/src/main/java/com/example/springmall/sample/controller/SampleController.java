@@ -2,6 +2,8 @@ package com.example.springmall.sample.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,12 +50,13 @@ public class SampleController {
 	}
 	//3-2 입력 액션
 	@RequestMapping(value="/sample/addSample", method=RequestMethod.POST)
-	public String addSample(SampleRequest sampleRequest) { 
+	public String addSample(SampleRequest sampleRequest, HttpServletRequest request) { 
 		//sample친구들 (도메인객체, 커맨드객체등등)
 		//command 객체의 멤버변수 == input태그 name속성, 표준 setter필요 
 		System.out.println("Controller.addSample 액션");
 		System.out.println("SampleRequest.multipartfile:"+sampleRequest.getMultipartFile());
-		if(sampleService.addSample(sampleRequest)==1) {
+		String path = request.getSession().getServletContext().getRealPath("/WEB-INF/uploads");
+		if(sampleService.addSample(sampleRequest, path)==1) {
 			System.out.println("정보등록완료");
 		}
 		return "redirect:/sample/sampleList";

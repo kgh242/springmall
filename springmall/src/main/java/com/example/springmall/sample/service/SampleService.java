@@ -57,7 +57,7 @@ public class SampleService {
 	}
 	
 	//3
-	public int addSample(SampleRequest sampleRequest) {
+	public int addSample(SampleRequest sampleRequest, String path) {
 		/*
 		 * SampleRequest --> Sample
 		 * 1. multipartfile 파일 데이터 저장
@@ -76,13 +76,13 @@ public class SampleService {
 		//2. sampleNo
 		sampleFile.setSampleNo(sample.getSampleNo()); //insertSample(sample)후에PK값이 sample에 채워진다
 		//3.SampleFilePath
-		String path = "c:\\uploads"; //복잡한 루틴을 통해서 경로설정을 할수있도록
-		sampleFile.setSamplefilePath(path);
 		//4.SampleFileExt
 		System.out.println(multipartFile.getOriginalFilename());
 		String originalFileName = multipartFile.getOriginalFilename();
+		sampleFile.setSamplefilePath(path);	//복잡한 루틴을 통해서 경로설정을 할수있도록
 		// .확장자
-		String ext = originalFileName.substring(0);
+		int pos = originalFileName.lastIndexOf(".");
+		String ext = originalFileName.substring(pos+1);
 		sampleFile.setSamplefileExt(ext);
 		//5.SampleFileName
 		String filename = UUID.randomUUID().toString();
